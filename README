@@ -1,0 +1,14 @@
+Example of broken dlsym(RTLD_NEXT) after r294373,r294470,r294936.
+It is returning the function's own address instead of NULL if there
+are no more symbols following it.  This only happens when the library
+is dlopen'd.  If it is linked in then there is no problem.
+
+dlopen test:
+
+# make
+# ./test
+
+Linked test:
+
+# make
+# ./test_linked
